@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ColorPicker.PopupPages.ColorSelectionPopupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:converters="clr-namespace:ColorPicker.Converters"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <pages:PopupPage.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+        <converters:StringToColorConverter x:Key="StringToColorConverter" />
+    </pages:PopupPage.Resources>
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="#fff"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <ScrollView Margin="8,8,8,8" VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    HeightRequest="350"
+                    Orientation="Vertical"
+                    WidthRequest="300">
+                    <flv:FlowListView
+                        Margin="5,0,5,0"
+                        FlowColumnCount="5"
+                        FlowItemTappedCommand="{Binding ColorTappedCommand}"
+                        FlowItemsSource="{Binding CategoriesColors}"
+                        FlowLastTappedItem="{Binding SelectedColor}"
+                        HasUnevenRows="True"
+                        SeparatorVisibility="None">
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0"
+                                    BackgroundColor="{Binding HexValue, Converter={StaticResource StringToColorConverter}}"
+                                    BorderColor="{Binding Selected, Converter={StaticResource Key=BoolToColorConverter}}"
+                                    CornerRadius="360"
+                                    HeightRequest="20">
+                                    <Grid
+                                        Margin="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                                        <ContentView BackgroundColor="{Binding HexValue, Converter={StaticResource StringToColorConverter}}" HeightRequest="40" />
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </flv:FlowListView.FlowColumnTemplate>
+                    </flv:FlowListView>
+
+                    <Button
+                        HorizontalOptions="FillAndExpand"
+                        Pressed="Button_Pressed"
+                        Text="Select" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>
