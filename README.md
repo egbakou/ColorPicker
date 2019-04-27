@@ -8,12 +8,6 @@ Click to see !
 
 
 
-## Gif demo
-
-![](ColorPicker/screenshots/Demo2.gif)
-
-
-
 ## Screenshots
 
 ![](ColorPicker/screenshots/post.png)
