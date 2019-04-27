@@ -76,6 +76,9 @@ namespace ColorPicker.PopupPages
                 new ColorExtended { HexValue = "#6666FF" },
                 new ColorExtended { HexValue = "#7298A5" },
                 new ColorExtended { HexValue = "#1C2641" },
+                new ColorExtended { HexValue = "#66FFCC" },
+                new ColorExtended { HexValue = "#00CC99" },
+                new ColorExtended { HexValue = "#0099CC" }
             };
 
         }

@@ -14,16 +14,34 @@
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <!--  COLOR PICKER  -->
+            <!--  SELECTED COLOR  -->
             <Frame
                 BackgroundColor="{Binding CategoryBackgroundColor, Converter={StaticResource StringToColorConverter}}"
                 CornerRadius="25"
                 HeightRequest="10"
-                WidthRequest="10">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ShowColorsPopup" />
-                </Frame.GestureRecognizers>
-            </Frame>
+                WidthRequest="10" />
+
+            <!--  BUTTON PICKER  -->
+            <ImageButton
+                Margin="0,10,0,0"
+                BackgroundColor="Transparent"
+                Pressed="ShowColorsPopup"
+                Source="pick.png">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </ImageButton>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

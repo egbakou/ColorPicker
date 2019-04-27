@@ -140,4 +140,10 @@
       <Name>ColorPicker</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\palette.png" />
+  </ItemGroup>
 </Project>
